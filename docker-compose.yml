@@ -1,0 +1,49 @@
+version: "3"
+services:
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: ./.docker/php.dev.docker
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www/just-test
+    volumes:
+      - ./:/var/www/just-test
+    networks:
+      - just-test-network
+
+  #Nginx Service
+  webserver:
+    build:
+      context: .
+      dockerfile: ./.docker/nginx.dev.docker
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - just-test-network
+
+  #MySQL Service
+  db:
+    image: mariadb
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "just_test"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "root"
+      MYSQL_ROOT_PASSWORD: "root"
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - just-test-network  
+
+#Docker Networks
+networks:
+  just-test-network:
+    driver: bridge
