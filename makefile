@@ -3,6 +3,7 @@ SHELL = /bin/bash
 SO := $(shell uname -s)
 
 start:
+	${MAKE} build
 	docker-compose up -d
 
 reset-db:
