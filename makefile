@@ -12,7 +12,7 @@ build:
 	docker-compose build --no-cache
 	${MAKE} start
 	docker-compose exec -T app composer install	
-	${MAKE} reset-db
+	${MAKE} setup-db-tests
 	docker-compose exec -T app -c "chmod -R 777 storage"
 	exit
 
