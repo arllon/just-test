@@ -13,6 +13,6 @@ jobs:
           path: vendor/
           key: ${{ runner.OS }}-composer--${{ hashFiles('**/composer.lock') }}
       - name: Start containers
-        run: make setup-github-tests
+        run: make setup-tests
       - name: Run tests
         run: make run-tests
