@@ -11,9 +11,7 @@ reset-db:
 build:
 	docker-compose build --no-cache
 	${MAKE} start
-	docker-compose exec -T app composer install
-	docker-compose exec -T app php artisan key:generate
-	docker-compose exec -T app php artisan config:clear
+	docker-compose exec -T app composer install	
 	${MAKE} reset-db
 	docker-compose exec -T app -c "chmod -R 777 storage"
 	exit
