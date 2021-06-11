@@ -5,19 +5,20 @@ SO := $(shell uname -s)
 start:
 	docker-compose up -d
 
-reset-db: 
-	docker-compose exec -T app yes | php artisan migrate:fresh --seed
+reset-db:
+	docker-compose exec -T app php artisan migrate:fresh --seed || :
+	exit || :
 
 build:
-	docker-compose build --no-cache
+	docker-compose build
 	${MAKE} start
 	docker-compose exec -T app composer install	
 	${MAKE} reset-db
-	docker-compose exec -T app -c "chmod -R 777 storage"
+	docker-compose exec -T app chmod -R 777 storage
 	exit
 
 setup-tests:
-	${MAKE} build
+	${MAKE} start
 	docker-compose exec -T app cp .env .env.bkp || :
 	docker-compose exec -T app cp .env.test .env || :
 	${MAKE} reset-db
