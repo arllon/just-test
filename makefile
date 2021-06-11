@@ -19,7 +19,7 @@ build:
 	exit
 
 setup-tests:
-	${MAKE} start
+	${MAKE} build
 	docker-compose exec -T app cp .env .env.bkp || :
 	docker-compose exec -T app cp .env.test .env || :
 	${MAKE} reset-db
