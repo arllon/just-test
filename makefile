@@ -24,7 +24,7 @@ setup-tests:
 	${MAKE} build
 	docker-compose exec -T app cp .env .env.bkp || :
 	docker-compose exec -T app cp .env.test .env || :
-	${MAKE} reset-db
+	${MAKE} setup-db-tests
 
 run-tests:
 	docker-compose exec -T app ./vendor/bin/phpunit
