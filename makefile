@@ -16,6 +16,10 @@ build:
 	docker-compose exec -T app -c "chmod -R 777 storage"
 	exit
 
+setup-db-tests:
+	docker-compose exec -T app php artisan migrate
+	docker-compose exec -T app php artisan seed
+
 setup-tests:
 	${MAKE} build
 	docker-compose exec -T app cp .env .env.bkp || :

@@ -35,7 +35,7 @@ $ composer install
 $ php artisan key:generate
 $ php artisan config:clear
 $ chmod -R 777 storage
-$ php artisan migrate:fresh --seed$ 
+$ php artisan migrate:fresh --seed
 $ php -S localhost:8000 -t public
 # Ao final do processo o projeto estará rodando na porta 8000 - acesse <http://localhost:8000>
 ```
