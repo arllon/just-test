@@ -6,25 +6,21 @@ start:
 	docker-compose up -d
 
 reset-db: 
-	docker-compose exec -T app php artisan migrate:fresh --seed
+	docker-compose exec -T app yes | php artisan migrate:fresh --seed
 
 build:
 	docker-compose build --no-cache
 	${MAKE} start
 	docker-compose exec -T app composer install	
-	${MAKE} setup-db-tests
+	${MAKE} reset-db
 	docker-compose exec -T app -c "chmod -R 777 storage"
 	exit
-
-setup-db-tests:
-	docker-compose exec -T app php artisan migrate
-	docker-compose exec -T app php artisan seed
 
 setup-tests:
 	${MAKE} build
 	docker-compose exec -T app cp .env .env.bkp || :
 	docker-compose exec -T app cp .env.test .env || :
-	${MAKE} setup-db-tests
+	${MAKE} reset-db
 
 run-tests:
 	docker-compose exec -T app ./vendor/bin/phpunit
