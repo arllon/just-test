@@ -12,7 +12,6 @@ reset-db:
 
 build:
 	docker-compose build
-	${MAKE} start
 	docker-compose exec -T app composer install	
 	${MAKE} reset-db
 	docker-compose exec -T app chmod -R 777 storage
