@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "4ffa3c9e-5ffb-4130-a7bb-b16181aee1d6",
+		"name": "Just Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Movement",
+			"item": [
+				{
+					"name": "Ranking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/movement/1/ranking",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"movement",
+								"1",
+								"ranking"
+							]
+						},
+						"description": "Endpoint para retornar o maior record pessoal em determinado movimento"
+					},
+					"response": [
+						{
+							"name": "Ranking",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APP_URL}}/movement/1/ranking",
+									"host": [
+										"{{APP_URL}}"
+									],
+									"path": [
+										"movement",
+										"1",
+										"ranking"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.7"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Jun 2021 13:11:31 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"value\": 190,\n        \"user\": \"Jose\",\n        \"movement\": \"Deadlift\",\n        \"date\": \"2021-01-04 00:00:00\",\n        \"position\": 1\n    },\n    {\n        \"value\": 180,\n        \"user\": \"João\",\n        \"movement\": \"Deadlift\",\n        \"date\": \"2021-01-01 00:00:00\",\n        \"position\": 2\n    },\n    {\n        \"value\": 170,\n        \"user\": \"Paulo\",\n        \"movement\": \"Deadlift\",\n        \"date\": \"2021-01-01 00:00:00\",\n        \"position\": 3\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	]
+}

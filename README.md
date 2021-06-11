@@ -59,4 +59,10 @@ $ make rollback-envs
 # Para executar os testes basta certificar que a .env está apontando para o ambiente local ou de testes e rodar
 $ php artisan migrate:fresh --seed
 $ ./vendor/bin/phpunit
+```
+## Documentação
+### Instalar o postman, após instalado importar a collection que está na pasta .docs/postman lá irá conter todos os endpoints e exemplos de request e response.
 
+### Endpoint do Teste de avaliação
+### Após todo setup ter sido executado, acessar no navegador:
+http://localhost/movement/1/ranking
